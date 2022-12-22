@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 @container = {
   '.-' => 'A',
   '-...' => 'B',
@@ -34,33 +36,33 @@
   '--...' => '7',
   '---..' => '8',
   '----.' => '9',
-  '-----' => '0',
+  '-----' => '0'
 }
 
 # decoding a character
-def decode_char(char) 
-	@container[char] 
-end 
+def decode_char(char)
+  @container[char]
+end
 
 puts decode_char('.-')
 
 # decoding a word
 def decode_word(word)
-	@result = ''
-	word.split.each { |i| @result.concat(@container[i]) }
-	@result
+  @result = ''
+  word.split.each { |i| @result.concat(@container[i]) }
+  @result
 end
 
 puts decode_word('-- -.--')
 
 # decoding an entire message
 def decode(message)
-   @sentence = message.split('   ')
-   @decoded_sentence = ''
-   @sentence.each do |n|
-     @decoded_sentence += "#{decode_word(n)} "
-   end
-   @decoded_sentence.strip
- end
+  @sentence = message.split('   ')
+  @decoded_sentence = ''
+  @sentence.each do |n|
+    @decoded_sentence += "#{decode_word(n)} "
+  end
+  @decoded_sentence.strip
+end
 
 puts decode('-- -.--   -. .- -- .')
